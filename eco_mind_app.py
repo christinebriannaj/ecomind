@@ -5,7 +5,6 @@ import streamlit as st
 import requests
 import random
 from openai import OpenAI
-import os
 
 # ---------- SETTINGS ----------
 OPENAI_API_KEY = "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"  # Replace with your key
