@@ -8,8 +8,8 @@ from openai import OpenAI
 import os
 
 # ---------- SETTINGS ----------
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-AQI_API = f"https://api.waqi.info/feed/{{city}}/?token={os.getenv('AQI_API_TOKEN')}"
+OPENAI_API_KEY = "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"  # Replace with your key
+AQI_API = "https://api.waqi.info/feed/{city}/?token=c2cc8ae86fd56ff95a132b7edf26cb68e69ae99e"
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
