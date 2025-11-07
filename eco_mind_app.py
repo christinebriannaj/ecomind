@@ -69,7 +69,7 @@ elif section == "Mindfulness Hub":
     st.header("🧘‍♀️ Mindfulness & Eco-Therapy")
     st.write("Choose a guided meditation theme:")
     theme = st.selectbox("Theme", ["Forest Calm", "Ocean Breathing", "Mountain Stillness", "Eco-Gratitude"])
-    st.audio("https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav")  # Example audio link
+    st.audio("https://github.com/christinebriannaj/ecomind/blob/main/ocean_sound.mp3")  # Example audio link
     st.info(f"Relax with the {theme} meditation. Close your eyes, breathe deeply, and feel your connection to nature.")
 
 # ---------- COMMUNITY FORUM ----------
