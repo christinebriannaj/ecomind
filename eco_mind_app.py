@@ -101,7 +101,7 @@ elif section == "AI Support Chatbot":
     if user_input:
         try:
             # Initialize Gemini model (choose 'gemini-1.5-flash' or 'gemini-1.5-pro' depending on access)
-            model = genai.GenerativeModel("gemini-1.5-flash")
+            model = genai.GenerativeModel("gemini-2.5-flash")
 
             # Send prompt to Gemini
             response = model.generate_content(
