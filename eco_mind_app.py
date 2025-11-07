@@ -4,13 +4,12 @@
 import streamlit as st
 import requests
 import random
-from openai import OpenAI
+import google.generativeai as genai
 
 # ---------- SETTINGS ----------
-OPENAI_API_KEY = "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"  # Replace with your key
-AQI_API = "https://api.waqi.info/feed/{city}/?token=c2cc8ae86fd56ff95a132b7edf26cb68e69ae99e"
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+genai.configure(api_key="AIzaSyBvC6WhoXk-dIk9Ky1D9Zw8RgwQAUEpVg0")
+AQI_API = "https://api.waqi.info/feed/{city}/?token=c2cc8ae86fd56ff95a132b7edf26cb68e69ae99e"
 
 st.set_page_config(page_title="🌿 EcoMind", layout="wide")
 
@@ -101,16 +100,11 @@ elif section == "AI Support Chatbot":
     user_input = st.text_input("You:")
     if user_input:
         try:
-            # NEW OpenAI API format
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a kind emotional support assistant with eco-awareness."},
-                    {"role": "user", "content": user_input}
-                ]
-            )
-
-            bot_reply = response.choices[0].message.content
+            model = genai.models.get("gemini-2.5-flash")  # or whichever model you have access to
+            chat = model.start_chat()
+            response = chat.send_message(user_input)
+            
+            bot_reply = response.text
             st.write(f"**EcoMind Bot:** {bot_reply}")
 
         except Exception as e:
