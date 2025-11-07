@@ -1,4 +1,4 @@
-# EcoMind: Mental Wellness & Eco Awareness App (Updated for OpenAI >=1.0.0)
+# EcoMind: Mental Wellness & Eco Awareness App
 # Run: streamlit run eco_mind_app.py
 
 import streamlit as st
@@ -100,12 +100,16 @@ elif section == "AI Support Chatbot":
     user_input = st.text_input("You:")
     if user_input:
         try:
-            model = genai.models.get("gemini-2.5-flash")  # or whichever model you have access to
-            chat = model.start_chat()
-            response = chat.send_message(user_input)
-            
-            bot_reply = response.text
-            st.write(f"**EcoMind Bot:** {bot_reply}")
+            # Initialize Gemini model (choose 'gemini-1.5-flash' or 'gemini-1.5-pro' depending on access)
+            model = genai.GenerativeModel("gemini-1.5-flash")
+
+            # Send prompt to Gemini
+            response = model.generate_content(
+                f"You are a kind emotional support assistant with eco-awareness. Respond empathetically to: {user_input}"
+            )
+
+            # Display the model's reply
+            st.write(f"**EcoMind Bot:** {response.text}")
 
         except Exception as e:
             st.error(f"Error: {e}")
